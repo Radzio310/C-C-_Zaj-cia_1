@@ -125,6 +125,7 @@ ruch ruch_gracza()
 void wyniki(int tabela[])
 {
     system("cls");
+    printf("\t\tOstatnie 10 gier\n\n");
     const char* wynik = "";
     for (int i = 0; i < 10; i++)
     {
@@ -164,8 +165,19 @@ int main()
     {
         system("cls");
         ruch gracz = ruch_gracza();
-        tabela[licznik] = gra(gracz);
-        licznik++;
+        if (licznik > 9)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                tabela[i] = tabela[i + 1];
+            }
+            tabela[licznik - 1] = gra(gracz);
+        }
+        else
+        {
+            tabela[licznik] = gra(gracz);
+            licznik++;
+        }        
         if (gra(gracz) == 0)
         {
             printf("\nGratulacje! Wygrales!\n\n");
