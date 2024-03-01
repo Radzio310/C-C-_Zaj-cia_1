@@ -5,7 +5,7 @@ int main()
     int liczba = 0;
     int suma = 0;
     printf("Podaj liczbe ponizej ktorej bedziemy sprawdzac: ");
-    scanf_s("%d", &liczba);
+    scanf("%d", &liczba);
     if (liczba <= 1)
     {
         suma = 0;
