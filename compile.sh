@@ -9,7 +9,6 @@ find . -name '*.c' | while read file; do
         clang -o "${output_path}/${filename}.exe" "$file"
         if [ $? -eq 0 ]; then
             echo "Compilation successful for $file"
-            exit 0
         else
             echo "Error compiling $file"
             exit 1 # Exit the pipeline with a non-zero status code
