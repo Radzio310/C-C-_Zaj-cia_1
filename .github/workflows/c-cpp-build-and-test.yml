@@ -21,6 +21,10 @@ jobs:
       with:
         version: latest
         platform: x64
+    - name: Rename files 
+      run: |
+        chmod +x rename.sh
+        ./rename.sh
     - name: Compile C files
       run: |
         chmod +x compile.sh
