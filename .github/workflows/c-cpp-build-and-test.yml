@@ -28,7 +28,8 @@ jobs:
     - name: Compile C files
       run: |
         chmod +x compile.sh
-        ./compile.sh
+        # This line executes the 'compile.sh' script and exits with code 1 if the compilation fails.
+        ./compile.sh || exit 1
       shell: bash
     - name: Upload Artifacts for Windows
       if: matrix.os == 'windows-latest'
