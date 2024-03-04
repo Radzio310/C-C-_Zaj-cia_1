@@ -26,11 +26,19 @@ jobs:
         chmod +x compile.sh
         ./compile.sh
       shell: bash
-    - name: Upload Artifacts
+    - name: Upload Artifacts for Windows
+      if: matrix.os == 'windows-latest'
       uses: actions/upload-artifact@v3
       with:
-        name: compiled-${{ matrix.os }}
+        name: compiled-windows
         path: |
           **/*.exe
+        if-no-files-found: error
+    - name: Upload Artifacts for Unix/Linux
+      if: matrix.os != 'windows-latest'
+      uses: actions/upload-artifact@v3
+      with:
+        name: compiled-unix-linux
+        path: |
           **/*
         if-no-files-found: error
