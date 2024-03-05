@@ -44,7 +44,7 @@ int main()
 {
     printf("Ile wierszy chcesz wyswietlic? ");
     printf("\nTwoja odpowiedz: ");
-    scanf_s("%d", &rows);
+    scanf("%d", &rows);
 
     int** pascal = (int**)malloc(rows * sizeof(int*)); // alokacja pamięci dla wierszy
     for (int i = 0; i < rows; i++)
