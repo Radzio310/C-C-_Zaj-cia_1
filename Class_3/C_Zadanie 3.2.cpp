@@ -38,10 +38,10 @@ int main()
 {
     printf("Ile wierszy ma miec Twoja macierz? "); // podanie danych przez użytkownika
     printf("\nTwoja odpowiedz: ");
-    scanf_s("%d", &rows);
+    scanf("%d", &rows);
     printf("Ile kolumn ma miec Twoja macierz? ");
     printf("\nTwoja odpowiedz: ");
-    scanf_s("%d", &cols);
+    scanf("%d", &cols);
 
     int** matrix = (int**)malloc(rows * sizeof(int*)); // alokacja pamięci dla wierszy
     for (int i = 0; i < rows; i++)
