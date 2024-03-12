@@ -51,7 +51,7 @@ int szukaj(int* tablica, int lewy, int prawy, int szukana)
     {
         return srodek;
     }
-    else if (lewy != prawy)
+    else if (lewy == srodek || prawy == srodek)
     {
         if (szukana > tablica[srodek])
         {
