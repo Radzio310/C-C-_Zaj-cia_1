@@ -20,7 +20,7 @@ int main()
 {
     int liczba;
     printf("Podaj liczbe do obliczenia silni: ");
-    scanf_s("%d", &liczba);
+    scanf("%d", &liczba);
     printf("\nSilnia z %d wynosi %d\n\n", liczba, factorial(liczba));
 
     return 0;
