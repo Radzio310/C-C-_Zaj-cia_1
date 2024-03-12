@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
@@ -51,21 +51,31 @@ int szukaj(int* tablica, int lewy, int prawy, int szukana)
     {
         return srodek;
     }
-    else if (lewy == srodek || prawy == srodek)
+    else
     {
         if (szukana > tablica[srodek])
         {
-            lewy = srodek;
+            if (lewy != srodek)
+            {
+                lewy = srodek;
+            }
+            else
+            {
+                return -1;
+            }
         }
         else
         {
-            prawy = srodek;
+            if (prawy != srodek)
+            {
+                prawy = srodek;
+            }
+            else
+            {
+                return -1;
+            }
         }
         return szukaj(tablica, lewy, prawy, szukana);
-    }
-    else
-    {
-        return -1;
     }
 }
 
@@ -102,7 +112,7 @@ int main()
     int indeks = szukaj(&tablica[0], 0, ile, szukana);
     if (indeks != -1)
     {
-        printf("\nTwoja liczba znajduje sie na indeksie o numerze %d\n\n", indeks);
+        printf("\nTwoja liczba znajduje sie na miejscu %d\n\n", indeks+1);
         for (int i = 0; i < ile; i++)
         {
             if (i % 10 == 0)
