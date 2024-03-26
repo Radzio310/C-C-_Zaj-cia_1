@@ -101,7 +101,7 @@ int main()
     //system("cls");
     printf("\nJaki element chcesz znalezc? ");
     int szukana;
-    scanf_s("%d", &szukana);
+    scanf("%d", &szukana);
     int indeks = szukaj(&tablica[0], 0, ile, szukana);
     if (indeks != -1)
     {
