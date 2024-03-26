@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
+//#include <windows.h>
 
-void setConsoleColor(int color) // zmiana koloru tekstu
-{
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-}
-
-void clear_input_buffer() // czyszczenie bufora wejściowego, aby działał poprawnie getchar()
-{
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
-}
+//void setConsoleColor(int color) // zmiana koloru tekstu
+//{
+//    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+//}
+//
+//void clear_input_buffer() // czyszczenie bufora wejściowego, aby działał poprawnie getchar()
+//{
+//    int c;
+//    while ((c = getchar()) != '\n' && c != EOF);
+//}
 
 void sortuj(int* tablica, int ile)
 {
@@ -106,31 +106,30 @@ int main()
     if (indeks != -1)
     {
         printf("\nTwoja liczba znajduje sie na miejscu %d\n\n", indeks+1);
-        for (int i = 0; i < ile; i++)
-        {
-            if (i % 10 == 0)
-            {
-                printf("\n");
-            }
-            if (i == indeks)
-            {
-                setConsoleColor(FOREGROUND_RED);
-            }
-            else
-            {
-                setConsoleColor(FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
-            }
-            printf("%3.d\t", tablica[i]);
-        }
+//        for (int i = 0; i < ile; i++)
+//        {
+//            if (i % 10 == 0)
+//            {
+//                printf("\n");
+//            }
+//            if (i == indeks)
+//            {
+//                setConsoleColor(FOREGROUND_RED);
+//            }
+//            else
+//            {
+//                setConsoleColor(FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
+//            }
+//            printf("%3.d\t", tablica[i]);
+//        }
     }
     else
     {
         printf("\nTwojej liczby nie ma w tabeli!");
     }
-    setConsoleColor(FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
+    //setConsoleColor(FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
 
     printf("\n\nWcisnij ENTER, aby zakonczyc...");
-    clear_input_buffer();
     getchar();
 
     return 0;
