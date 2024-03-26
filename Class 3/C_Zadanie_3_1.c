@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int rows = 0; // ile wierszy ma trojkat Pascala
@@ -27,7 +27,7 @@ void fullfilPascal(int** pascal)
 
 void displayPascal(int** pascal)
 {
-    system("cls");
+     system("cls");
     printf("Twoj trojkat Pascala:\n\n");
     // Wypełnianie trójkąta Pascala
     for (int line = 0; line < rows; line++)
@@ -54,8 +54,9 @@ int main()
 
     fullfilPascal(pascal);
     displayPascal(pascal);
-    
+
     free(pascal); // zwolnienie pamięci
 
     return 0;
 }
+
