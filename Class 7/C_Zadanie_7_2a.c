@@ -29,15 +29,24 @@ int main()
     {
         int max_red = 0, max_green = 0, max_blue = 0;
         int num = 0;
+        int linelength = 1;
 
-        for (int i = 0; linia[i] != '\0'; i++) // Iterujemy przez znaki w linii do napotkania znaku końca linii
+        // rzeczywista długość linii
+        for(int i = 0; i < MAX_LINE_LENGTH; i++) {
+            if(linia[i] != NULL) {
+                linelength++;
+            }
+        }
+
+        for (int i = 8; i < linelength; i++) // Iterujemy przez znaki w linii do napotkania znaku końca linii
         {
             char znak = linia[i];
             if (isdigit(znak))
             {
-                if (i > 0 && isdigit(linia[i - 1]))
+                if (i > 0 && isdigit(linia[i + 1]))
                 {
-                    num = ( (linia[i-1] - '0') * 10) + (linia[i] -'0'); // liczba dwucyfrowa
+                    num = ( (linia[i] - '0') * 10) + (linia[i+1] -'0'); // liczba dwucyfrowa
+                    i++;
                 }
                 else
                 {
@@ -51,24 +60,27 @@ int main()
                     for (int k = 0; k < 5 && (i + k) < 100; k++)
                     {
                         slowo[k] = linia[i + k]; // Tworzymy słowo z następnych 5 liter w napisie
-                        slowo[k + 1] = '\0'; // Kończymy słowo znakiem null
+                        //slowo[k + 1] = '\0'; // Kończymy słowo znakiem null
                         if (znajdzSlowo(slowo, "red"))
                         {
                             if (num > max_red)
                             {
                                 max_red = num;
+                                i += k + 1;
                             }
                         } else if (znajdzSlowo(slowo, "green"))
                         {
                             if (num > max_green)
                             {
                                 max_green = num;
+                                i += k + 1;
                             }
                         } else if (znajdzSlowo(slowo, "blue"))
                         {
                             if (num > max_blue)
                             {
                                 max_blue = num;
+                                i += k + 1;
                             }
                         }
                     }
