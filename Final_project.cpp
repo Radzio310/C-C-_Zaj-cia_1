@@ -96,6 +96,8 @@ int generateRandomInt(int min, int max) {
     return dis(gen);
 }
 
+int cezar = generateRandomInt(1, 25);
+
 void endEscapes() {
     sleep(3000);
     printRed("\n\nTY TCHORZU!\n");
@@ -391,7 +393,7 @@ std::vector<Mission> puzzles = {
     {3, "puzzles", "Kurde, widzial ktos mlodego? O, tu jestes! Sluchaj, znowu ktos zamknal moja szafke z drugim sniadaniem... Zostawil tylko jakas karteczke z rzymskimi liczbami ale zupelnie nie rozumiem po co bo te liczby nie pasuja jako kod... Jesli dasz rade mi to otworzyc, to mysle ze bede w stanie Ci sie nalezycie odwdzieczyc. Umieram z glodu... \n\n WIADOMOSC: VIII, II, XI, IX, XVII, I, XXXV, VIII", "52336188", false, "Gasnica doswiadczonego pogromcy"},
     {4, "puzzles", "Sluchaj mlody, slyszalem, ze jestes dobry w lamiglowkach. Chlopaki nadawali Morse'em sygnal jaki sprzet im sie skonczyl ale cos pomieszalem kolejnosc liter. Wiesz moze o jaki przedmiot chodzi? \n\n WIADOMOSC : CAINGSA", "GASNICA", false, "Apteczka"},
     {5, "puzzles", "Chlopakiiiii! O, hej swiezak. Chodz, przydasz sie. Musimy szybko rozszyfrowac czego zabraklo Generalowi Leonardowi w terenie i dostarczyc mu to do Wielkiej Fojerki. Rozumiesz cos z tego? \n\n WIADOMOSC : MYOBB NODEW", "BOMBY WODNE", false, "Apteczka"},
-    {6, "puzzles", "M...m...mlody, chodz no zobacz. Zakrwawiona kartka z wiadomoscia...Bartek Chlapochlust oddal zycie zeby ja dostarczyc [SZLOCH]... Niech to nie pojdzie na marne. Musimy to odszyfrowac...cala nadzieja w Tobie, bo ja sie dzis juz nie nadaje do tego\n\n WIADOMOSC : " + caesarEncrypt("W ciemnym lesie, za gorami, drzemie FURIA ze smokami", 7), "7", false, "Apteczka"}
+    {6, "puzzles", "M...m...mlody, chodz no zobacz. Zakrwawiona kartka z wiadomoscia...Bartek Chlapochlust oddal zycie zeby ja dostarczyc [SZLOCH]... Niech to nie pojdzie na marne. Musimy to odszyfrowac...cala nadzieja w Tobie, bo ja sie dzis juz nie nadaje do tego\n\n WIADOMOSC : " + caesarEncrypt("W ciemnym lesie, za gorami, drzemie FURIA ze smokami", cezar), to_string(cezar), false, "Apteczka"}
 };
 
 // Misje ratunkowe
@@ -412,6 +414,7 @@ std::vector<Mission> huntMissions = {
 };
 
 void Mission::startMission(Player& player, const std::string& narrator) {
+    cezar = generateRandomInt(1, 25);
     printLightBlue(narrator + ": ");
     printLetterByLetter(description + "\n");
     execute(player);
@@ -421,6 +424,7 @@ void Mission::execute(Player& player) {
     if (type == "puzzles") {
         bool blad = false;
         int licznik_bledow = 0;
+        int maly_licznik = 0; // dla szyfru Cezara
         if (id == 6) {
             printLightBlue("Maro, Twoj buddy: ");
             printLetterByLetter("To mi wyglada na szyfr Cezara. Zmieniasz litery o odpowiednia liczbe np. A -> D (zmiana o 3)\nJak myslisz o ile musimy przesunac?\n");
@@ -486,6 +490,13 @@ void Mission::execute(Player& player) {
                 blad = true;
                 if (id != 6) {
                     licznik_bledow++;
+                }
+                else {
+                    maly_licznik++;
+                    if (maly_licznik >= 2) {
+                        licznik_bledow++;
+                        maly_licznik = 0;
+                    }
                 }
             }
         } while (blad == true && licznik_bledow < 3);
