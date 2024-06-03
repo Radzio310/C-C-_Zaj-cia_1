@@ -1,7 +1,3 @@
-//
-// Created by Radziulek on 03.06.2024.
-//
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -217,23 +213,23 @@ void generateMathProblem(int lower_bound, int upper_bound, char& operation, int&
     int op = rand() % 4;
 
     switch (op) {
-        case 0:
-            operation = '+';
-            correct_answer = num1 + num2;
-            break;
-        case 1:
-            operation = '-';
-            correct_answer = num1 - num2;
-            break;
-        case 2:
-            operation = '*';
-            correct_answer = num1 * num2;
-            break;
-        case 3:
-            operation = '/';
-            int num3 = num1 * num2;
-            correct_answer = num3 / num2;
-            break;
+    case 0:
+        operation = '+';
+        correct_answer = num1 + num2;
+        break;
+    case 1:
+        operation = '-';
+        correct_answer = num1 - num2;
+        break;
+    case 2:
+        operation = '*';
+        correct_answer = num1 * num2;
+        break;
+    case 3:
+        operation = '/';
+        int num3 = num1 * num2;
+        correct_answer = num3 / num2;
+        break;
     }
 }
 
@@ -390,29 +386,29 @@ public:
 
 // Lamiglowki
 std::vector<Mission> puzzles = {
-        {1, "puzzles", "Mlody, chodz no tu! Otrzymalismy zaszyfrowana wiadomosc ale ni w zab nie jestem w stanie zrozumiec o co w niej chodzi. Podobno ten kod otwiera wszystkie drzwi w Dzielnicy Plomieni, a wlasnie tam sa uwiezieni Borys Rzucweza z Jurkiem Podajwiadrem. Dasz rade to odczytac?\n\n WIADOMOSC: XII, IX, XVIII, XXI", "4375", false, "Apteczka"},
-        {2, "puzzles", "Ej swiezak, jestes? Otrzymalismy zaszyfrowana wiadomosc ale ni w zab nie jestem w stanie zrozumiec o co w niej chodzi.Podobno ten kod otwiera wszystkie drzwi na Ulicy Aptecznej. Podobno jest tam troche sprzetu medycznego, wiec warto by bylo tam wejsc. Dasz rade to odczytac? \n\n WIADOMOSC : X, IV, VIII, XXXVI", "2359", false, "Apteczka"},
-        {3, "puzzles", "Kurde, widzial ktos mlodego? O, tu jestes! Sluchaj, znowu ktos zamknal moja szafke z drugim sniadaniem... Zostawil tylko jakas karteczke z rzymskimi liczbami ale zupelnie nie rozumiem po co bo te liczby nie pasuja jako kod... Jesli dasz rade mi to otworzyc, to mysle ze bede w stanie Ci sie nalezycie odwdzieczyc. Umieram z glodu... \n\n WIADOMOSC: VIII, II, XI, IX, XVII, I, XXXV, VIII", "52336188", false, "Gasnica doswiadczonego pogromcy"},
-        {4, "puzzles", "Sluchaj mlody, slyszalem, ze jestes dobry w lamiglowkach. Chlopaki nadawali Morse'em sygnal jaki sprzet im sie skonczyl ale cos pomieszalem kolejnosc liter. Wiesz moze o jaki przedmiot chodzi? \n\n WIADOMOSC : CAINGSA", "GASNICA", false, "Apteczka"},
-        {5, "puzzles", "Chlopakiiiii! O, hej swiezak. Chodz, przydasz sie. Musimy szybko rozszyfrowac czego zabraklo Generalowi Leonardowi w terenie i dostarczyc mu to do Wielkiej Fojerki. Rozumiesz cos z tego? \n\n WIADOMOSC : MYOBB NODEW", "BOMBY WODNE", false, "Apteczka"},
-        {6, "puzzles", "M...m...mlody, chodz no zobacz. Zakrwawiona kartka z wiadomoscia...Bartek Chlapochlust oddal zycie zeby ja dostarczyc [SZLOCH]... Niech to nie pojdzie na marne. Musimy to odszyfrowac...cala nadzieja w Tobie, bo ja sie dzis juz nie nadaje do tego\n\n WIADOMOSC : D jpltuulj slzpl, gh nvyhpz, kayltpl MBYPH gh ztvrphpz", "7", false, "Apteczka"}
+    {1, "puzzles", "Mlody, chodz no tu! Otrzymalismy zaszyfrowana wiadomosc ale ni w zab nie jestem w stanie zrozumiec o co w niej chodzi. Podobno ten kod otwiera wszystkie drzwi w Dzielnicy Plomieni, a wlasnie tam sa uwiezieni Borys Rzucweza z Jurkiem Podajwiadrem. Dasz rade to odczytac?\n\n WIADOMOSC: XII, IX, XVIII, XXI", "4375", false, "Apteczka"},
+    {2, "puzzles", "Ej swiezak, jestes? Otrzymalismy zaszyfrowana wiadomosc ale ni w zab nie jestem w stanie zrozumiec o co w niej chodzi.Podobno ten kod otwiera wszystkie drzwi na Ulicy Aptecznej. Podobno jest tam troche sprzetu medycznego, wiec warto by bylo tam wejsc. Dasz rade to odczytac? \n\n WIADOMOSC : X, IV, VIII, XXXVI", "2359", false, "Apteczka"},
+    {3, "puzzles", "Kurde, widzial ktos mlodego? O, tu jestes! Sluchaj, znowu ktos zamknal moja szafke z drugim sniadaniem... Zostawil tylko jakas karteczke z rzymskimi liczbami ale zupelnie nie rozumiem po co bo te liczby nie pasuja jako kod... Jesli dasz rade mi to otworzyc, to mysle ze bede w stanie Ci sie nalezycie odwdzieczyc. Umieram z glodu... \n\n WIADOMOSC: VIII, II, XI, IX, XVII, I, XXXV, VIII", "52336188", false, "Gasnica doswiadczonego pogromcy"},
+    {4, "puzzles", "Sluchaj mlody, slyszalem, ze jestes dobry w lamiglowkach. Chlopaki nadawali Morse'em sygnal jaki sprzet im sie skonczyl ale cos pomieszalem kolejnosc liter. Wiesz moze o jaki przedmiot chodzi? \n\n WIADOMOSC : CAINGSA", "GASNICA", false, "Apteczka"},
+    {5, "puzzles", "Chlopakiiiii! O, hej swiezak. Chodz, przydasz sie. Musimy szybko rozszyfrowac czego zabraklo Generalowi Leonardowi w terenie i dostarczyc mu to do Wielkiej Fojerki. Rozumiesz cos z tego? \n\n WIADOMOSC : MYOBB NODEW", "BOMBY WODNE", false, "Apteczka"},
+    {6, "puzzles", "M...m...mlody, chodz no zobacz. Zakrwawiona kartka z wiadomoscia...Bartek Chlapochlust oddal zycie zeby ja dostarczyc [SZLOCH]... Niech to nie pojdzie na marne. Musimy to odszyfrowac...cala nadzieja w Tobie, bo ja sie dzis juz nie nadaje do tego\n\n WIADOMOSC : " + caesarEncrypt("W ciemnym lesie, za gorami, drzemie FURIA ze smokami", 7), "7", false, "Apteczka"}
 };
 
 // Misje ratunkowe
 std::vector<Mission> rescueMissions = {
-        {3, "rescue", "ALAAAAARM! Cywil w budynku przy Kajakowej!! Musimy pedzic mu na ratunek! Mlody, wskakuj na pake!",  "", false, "Gasnior 2000"},
-        {2, "rescue", "POBUDKAAA! Kazda sekunda jest na wage zlota! Musimy pomoc poszkodowanym, zanim pozar sie rozprzestrzeni! Czy potrafisz utrzymac zimna krew w obliczu niebezpieczenstwa?", "", false, "Bomba wodna"},
-        {1, "rescue", "[TRAAAACH] Budynki sie wala!! Musimy ewakuowac mieszkancow zanim zostana pochlonieci przez ziemie i plomienie! Czas na akcje!", "", false, "Apteczka"}
+    {3, "rescue", "ALAAAAARM! Cywil w budynku przy Kajakowej!! Musimy pedzic mu na ratunek! Mlody, wskakuj na pake!",  "", false, "Gasnior 2000"},
+    {2, "rescue", "POBUDKAAA! Kazda sekunda jest na wage zlota! Musimy pomoc poszkodowanym, zanim pozar sie rozprzestrzeni! Czy potrafisz utrzymac zimna krew w obliczu niebezpieczenstwa?", "", false, "Bomba wodna"},
+    {1, "rescue", "[TRAAAACH] Budynki sie wala!! Musimy ewakuowac mieszkancow zanim zostana pochlonieci przez ziemie i plomienie! Czas na akcje!", "", false, "Apteczka"}
 };
 
 // Misje polowan
 std::vector<Mission> huntMissions = {
-        {1, "hunting", "CO TO ZA HALAS? To chyba jakis smok! Mysle ze to musi byc PAROPLUJELK! Szybko, szybko chlopaki, lapac sie za gasnice! Te, mlody, Ciebie tez sie to tyczy! Nie ma czasu do stracenia", "", false, "Gasnica mlodego pogromcy"},
-        {2, "hunting", "Trzeba dzialac szybko! Smoki zblizaja sie do miasta, a my musimy je powstrzymac! BRZYTWOUSTY odlaczyl sie od grupy i leci na polnoc. Mamy tam wielu cywili, ale nie wystarczajaco ludzi zeby byc tu i tam... Mlody, musisz sam z nim zawalczyc! Wierzymy w Ciebie!", "", false, "Apteczka"},
-        {3, "hunting", "Czas na polowanie! ZIMNOLUB, smok znany ze swych niebezpiecznych podmuchow lodu, grasuje w okolicy! Musimy go pokonac zanim zniszczy kolejna wioske! Czujesz to? To adrenalina! Ruszajmy!", "", false, "Bomba wodna"},
-        {4, "hunting", "Ale sie ciemni... To nie wrozy nic dobrego... Kiedy ostatnio widzialem takie chmury, chwile pozniej pojawil sie... AAAAA TO GROMOTRACH! Chowajcie sie chlopaki! Mlody, lap sie za gasnice i do atakuuuuuuu!", "", false, "Bomba wodna"},
-        {5, "hunting", "Wooow... Tez to poczules? Cala siedziba glowna sie trzesie. To na pewno sprawka BULDOZERANA! To najpotezniejszy smok jakiego widziano! Oczywiscie jest tez NOCNA FURIA...ale jej nikt nigdy nie widzial...wowowow, dobra nie ma czasu na gadanie! Trzeba namierzyc BULDOZERANA!", "", false, "Spryskiwacz 3000"},
-        {6, "hunting", "Mlody...cala nadzieja w Tobie... [ekhu, ekh] SZCZERBATEK jest legendarnym krolem smokow, nikt nigdy go nie widzial, nikt nie wie jakie ma moce i ile ma sil. Jedyne co wiemy to ze nikt nie przezyl nigdy spotkania z nim...\nAle teraz cala nadzieja w Tobie! Pyroklas na Tobie polega! Nie zawiedz nas!", "", false, "KORONA SMOKOW"}
+    {1, "hunting", "CO TO ZA HALAS? To chyba jakis smok! Mysle ze to musi byc PAROPLUJELK! Szybko, szybko chlopaki, lapac sie za gasnice! Te, mlody, Ciebie tez sie to tyczy! Nie ma czasu do stracenia", "", false, "Gasnica mlodego pogromcy"},
+    {2, "hunting", "Trzeba dzialac szybko! Smoki zblizaja sie do miasta, a my musimy je powstrzymac! BRZYTWOUSTY odlaczyl sie od grupy i leci na polnoc. Mamy tam wielu cywili, ale nie wystarczajaco ludzi zeby byc tu i tam... Mlody, musisz sam z nim zawalczyc! Wierzymy w Ciebie!", "", false, "Apteczka"},
+    {3, "hunting", "Czas na polowanie! ZIMNOLUB, smok znany ze swych niebezpiecznych podmuchow lodu, grasuje w okolicy! Musimy go pokonac zanim zniszczy kolejna wioske! Czujesz to? To adrenalina! Ruszajmy!", "", false, "Bomba wodna"},
+    {4, "hunting", "Ale sie ciemni... To nie wrozy nic dobrego... Kiedy ostatnio widzialem takie chmury, chwile pozniej pojawil sie... AAAAA TO GROMOTRACH! Chowajcie sie chlopaki! Mlody, lap sie za gasnice i do atakuuuuuuu!", "", false, "Bomba wodna"},
+    {5, "hunting", "Wooow... Tez to poczules? Cala siedziba glowna sie trzesie. To na pewno sprawka BULDOZERANA! To najpotezniejszy smok jakiego widziano! Oczywiscie jest tez NOCNA FURIA...ale jej nikt nigdy nie widzial...wowowow, dobra nie ma czasu na gadanie! Trzeba namierzyc BULDOZERANA!", "", false, "Spryskiwacz 3000"},
+    {6, "hunting", "Mlody...cala nadzieja w Tobie... [ekhu, ekh] SZCZERBATEK jest legendarnym krolem smokow, nikt nigdy go nie widzial, nikt nie wie jakie ma moce i ile ma sil. Jedyne co wiemy to ze nikt nie przezyl nigdy spotkania z nim...\nAle teraz cala nadzieja w Tobie! Pyroklas na Tobie polega! Nie zawiedz nas!", "", false, "KORONA SMOKOW"}
 };
 
 void Mission::startMission(Player& player, const std::string& narrator) {
@@ -434,8 +430,14 @@ void Mission::execute(Player& player) {
             printLetterByLetter("Twoja odpowiedz: ");
             cin >> userAnswer;
             if (id == 6) {
-                string wiadomosc = "D jpltuulj slzpl, gh nvyhpz, kayltpl MBYPH gh ztvrphpz";
-                printBlue("Zmieniona wiadomosc: " + caesarDecrypt(wiadomosc, stoi(userAnswer)) + "\n");
+                string wiadomosc = caesarEncrypt("W ciemnym lesie, za gorami, drzemie FURIA ze smokami", stoi(answer));
+                printLetterByLetter("Zmieniona wiadomosc : ");
+                if (userAnswer == answer) {
+                    printGreen(caesarDecrypt(wiadomosc, stoi(userAnswer)) + "\n");
+                }
+                else {
+                    printBlue(caesarDecrypt(wiadomosc, stoi(userAnswer)) + "\n");
+                }
             }
             if (userAnswer == answer) {
                 if (id < 4) {
@@ -467,7 +469,7 @@ void Mission::execute(Player& player) {
                     printGold("[dodano GASNICE DOSWIADCZONEGO POGROMCY do ekwipunku]\n");
                     player.actual_weapon_damage = 50;
                 }
-
+                
                 player.completed_missions += 1;
                 player.levelUp();
                 completed = true;
@@ -496,13 +498,14 @@ void Mission::execute(Player& player) {
         }
     }
     else if (type == "rescue") {
-
+        printLightBlue("General Leonard: ");
+        printLetterByLetter("Ratowanie ludzi to akcja, ktora wymaga trzezwego i szybkiego umyslu. Decyzje czesto sa czysto logiczne i racjonalne - nie ma czasu na emocje. Wszystko da sie przedstawic w liczbach, wiec Twoim zadaniem bedzie obliczanie poprawnych wynikow - lacznej masy cywilow, stezenia dymu, czasu do dojazdu na miejsce -> wszystko co ma wplyw na sukces akcji. Liczymy na Ciebie i Twoje szybkie obliczenia!\n");
         srand(static_cast<unsigned int>(time(nullptr)));
         const int total_questions = 4 * id;
         const int time_limit = 15 - 3 * id; // seconds
         const int lower_bound = 1;
         const int upper_bound = 15;
-        const double required_accuracy = 0.8;
+        const double required_accuracy = 0.74;
         int correct_answers = 0;
 
         for (int i = 0; i < total_questions; ++i) {
@@ -576,7 +579,7 @@ void Mission::execute(Player& player) {
                 endRescueMistakes();
             }
         }
-
+        
     }
 }
 
@@ -662,7 +665,7 @@ void battle(Player& player, Dragon& dragon) {
                     cout << "Brak apteczek w ekwipunku.\n";
                     zly_ruch = true;
                 }
-            }
+            } 
             else {
                 printLetterByLetter("Masz pelne zdrowie :) Nie ma sensu marnowac apteczek\n");
                 zly_ruch = true;
@@ -1148,9 +1151,9 @@ void Game::loadGame() {
         loadFile >> player.rescueMistakes;
         std::string item;
         player.inventory.clear();
-        //pusta linijka
-        string temp;
-        std::getline(loadFile, temp);
+            //pusta linijka
+            string temp;
+            std::getline(loadFile, temp);
         while (std::getline(loadFile, item)) {
             player.inventory.push_back(item);
         }
