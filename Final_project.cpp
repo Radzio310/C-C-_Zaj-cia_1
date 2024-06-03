@@ -106,9 +106,9 @@ void endEscapes() {
     printRed("\n\n========================= KONIEC GRY - PORAZKA =========================\n\n");
     printGold("\t\t*********************************************************\n\n");
     sleep(1000);
-    printGold("\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n");
+    printGold("\t\t*\t\tRADZIEK STUDIOS PRESENTS\t\t*\n\n");
     sleep(1000);
-    printGold("\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n");
+    printGold("\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n");
     exit(0);
 }
 
@@ -121,9 +121,9 @@ void endPuzzleMistakes() {
     printGold("****************************************************************************\n\n");
     printGold("\t\t*********************************************************\n\n");
     sleep(1000);
-    printGold("\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n");
+    printGold("\t\t*\t\tRADZIEK STUDIOS PRESENTS\t\t*\n\n");
     sleep(1000);
-    printGold("\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n");
+    printGold("\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n");
     exit(0);
 }
 
@@ -138,9 +138,9 @@ void endRescueMistakes() {
     printRed("\n\n========================= KONIEC GRY - PORAZKA =========================\n\n");
     printGold("\t\t*********************************************************\n\n");
     sleep(1000);
-    printGold("\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n");
+    printGold("\t\t*\t\tRADZIEK STUDIOS PRESENTS\t\t*\n\n");
     sleep(1000);
-    printGold("\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n");
+    printGold("\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n");
     exit(0);
 }
 
@@ -155,9 +155,9 @@ void endDead() {
     printRed("\n\n========================= KONIEC GRY - PORAZKA =========================\n\n");
     printGold("\t\t*********************************************************\n\n");
     sleep(1000);
-    printGold("\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n");
+    printGold("\t\t*\t\tRADZIEK STUDIOS  PRESENTS\t\t*\n\n");
     sleep(1000);
-    printGold("\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n");
+    printGold("\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n");
     exit(0);
 }
 
@@ -181,9 +181,9 @@ void endWin() {
     printGreen("\n\n========================= KONIEC GRY - ZWYCIESTWO =========================\n\n");
     printGold("\t\t*********************************************************\n\n");
     sleep(1000);
-    printGold("\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n");
+    printGold("\t\t*\t\tRADZIEK STUDIOS  PRESENTS\t\t*\n\n");
     sleep(1000);
-    printGold("\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n");
+    printGold("\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n");
     exit(0);
 }
 
@@ -207,6 +207,10 @@ string caesarEncrypt(const string& text, int shift) {
 // Funkcja do dekodowania tekstu
 string caesarDecrypt(const string& text, int shift) {
     return caesarEncrypt(text, 26 - shift);
+}
+
+void waitForEnter() {
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void generateMathProblem(int lower_bound, int upper_bound, char& operation, int& num1, int& num2, double& correct_answer) {
@@ -519,6 +523,9 @@ void Mission::execute(Player& player) {
         const int upper_bound = 15;
         const double required_accuracy = 0.74;
         int correct_answers = 0;
+        printLetterByLetter("\nGotowy? [Wcisnij ENTER, aby rozpoczac ratowanie cywili]\n");
+        cin.ignore();
+        getchar();
 
         for (int i = 0; i < total_questions; ++i) {
             char operation;
@@ -528,7 +535,7 @@ void Mission::execute(Player& player) {
 
             generateMathProblem(lower_bound, upper_bound, operation, num1, num2, correct_answer);
             if (operation != '/') {
-                cout << "# :" << num1 << " " << operation << " " << num2 << " = ? (Masz " << time_limit << " sekund)" << endl;
+                cout << "#: " << num1 << " " << operation << " " << num2 << " = ? (Masz " << time_limit << " sekund)" << endl;
                 start = steady_clock::now();
             }
             else {
@@ -539,6 +546,7 @@ void Mission::execute(Player& player) {
 
             double player_answer;
             cin >> player_answer;
+            cin.ignore();
             auto end = steady_clock::now();
             if (end - start < seconds(time_limit) && abs(player_answer - correct_answer) < 0.0001) {
                 printGreen("Cywil uratowany!\n");
@@ -914,7 +922,7 @@ void Game::initializeGame() {
 }
 
 void Game::displayIntro() {
-    string intro = "\t\t*********************************************************\n\n\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n";
+    string intro = "\t\t*********************************************************\n\n\t\t*\t\tRADZIEK STUDIOS  PRESENTS\t\t*\n\n\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n";
     printLetterByLetter(intro);
 }
 
@@ -970,9 +978,9 @@ void Game::handleMainMenuInput(const std::string& input) {
     else if (input == "3") {
         printGold("\t\t*********************************************************\n\n");
         sleep(1000);
-        printGold("\t\t*\t\tRADZIEK ENTERPRISES PRESENTS\t\t*\n\n");
+        printGold("\t\t*\t\tRADZIEK STUDIOS  PRESENTS\t\t*\n\n");
         sleep(1000);
-        printGold("\t\t*\t\t  DRAGON CITY - AWAKENESS  \t\t*\n\n");
+        printGold("\t\t*\t\t DRAGON CITY - AWAKENESS   \t\t*\n\n");
         exit(0);
     }
     else {
