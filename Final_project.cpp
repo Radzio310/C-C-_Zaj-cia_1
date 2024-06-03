@@ -390,9 +390,9 @@ public:
 std::vector<Mission> puzzles = {
     {1, "puzzles", "Mlody, chodz no tu! Otrzymalismy zaszyfrowana wiadomosc ale ni w zab nie jestem w stanie zrozumiec o co w niej chodzi. Podobno ten kod otwiera wszystkie drzwi w Dzielnicy Plomieni, a wlasnie tam sa uwiezieni Borys Rzucweza z Jurkiem Podajwiadrem. Dasz rade to odczytac?\n\n WIADOMOSC: XII, IX, XVIII, XXI", "4375", false, "Apteczka"},
     {2, "puzzles", "Ej swiezak, jestes? Otrzymalismy zaszyfrowana wiadomosc ale ni w zab nie jestem w stanie zrozumiec o co w niej chodzi.Podobno ten kod otwiera wszystkie drzwi na Ulicy Aptecznej. Podobno jest tam troche sprzetu medycznego, wiec warto by bylo tam wejsc. Dasz rade to odczytac? \n\n WIADOMOSC : X, IV, VIII, XXXVI", "2359", false, "Apteczka"},
-    {3, "puzzles", "Kurde, widzial ktos mlodego? O, tu jestes! Sluchaj, znowu ktos zamknal moja szafke z drugim sniadaniem... Zostawil tylko jakas karteczke z rzymskimi liczbami ale zupelnie nie rozumiem po co bo te liczby nie pasuja jako kod... Jesli dasz rade mi to otworzyc, to mysle ze bede w stanie Ci sie nalezycie odwdzieczyc. Umieram z glodu... \n\n WIADOMOSC: VIII, II, XI, IX, XVII, I, XXXV, VIII", "52336188", false, "Gasnica doswiadczonego pogromcy"},
+    {3, "puzzles", "Kurde, widzial ktos mlodego? O, tu jestes! Sluchaj, znowu ktos zamknal moja szafke z drugim sniadaniem... Zostawil tylko jakas karteczke z rzymskimi liczbami ale zupelnie nie rozumiem po co bo te liczby nie pasuja jako kod... Jesli dasz rade mi to otworzyc, to mysle ze bede w stanie Ci sie nalezycie odwdzieczyc. Umieram z glodu... \n\n WIADOMOSC: VIII, II, XI, IX, XVII, I, XXXV, VIII", "52336185", false, "Gasnica doswiadczonego pogromcy"},
     {4, "puzzles", "Sluchaj mlody, slyszalem, ze jestes dobry w lamiglowkach. Chlopaki nadawali Morse'em sygnal jaki sprzet im sie skonczyl ale cos pomieszalem kolejnosc liter. Wiesz moze o jaki przedmiot chodzi? \n\n WIADOMOSC : CAINGSA", "GASNICA", false, "Apteczka"},
-    {5, "puzzles", "Chlopakiiiii! O, hej swiezak. Chodz, przydasz sie. Musimy szybko rozszyfrowac czego zabraklo Generalowi Leonardowi w terenie i dostarczyc mu to do Wielkiej Fojerki. Rozumiesz cos z tego? \n\n WIADOMOSC : MYOBB NODEW", "BOMBY WODNE", false, "Apteczka"},
+    {5, "puzzles", "Chlopakiiiii! O, hej swiezak. Chodz, przydasz sie. Musimy szybko rozszyfrowac czego zabraklo Generalowi Leonardowi w terenie i dostarczyc mu to do Wielkiej Fojerki. Rozumiesz cos z tego? \n\n WIADOMOSC : MYOBB_NODEW", "BOMBY_WODNE", false, "Apteczka"},
     {6, "puzzles", "M...m...mlody, chodz no zobacz. Zakrwawiona kartka z wiadomoscia...Bartek Chlapochlust oddal zycie zeby ja dostarczyc [SZLOCH]... Niech to nie pojdzie na marne. Musimy to odszyfrowac...cala nadzieja w Tobie, bo ja sie dzis juz nie nadaje do tego\n\n WIADOMOSC : " + caesarEncrypt("W ciemnym lesie, za gorami, drzemie FURIA ze smokami", cezar), to_string(cezar), false, "Apteczka"}
 };
 
@@ -433,6 +433,7 @@ void Mission::execute(Player& player) {
             string userAnswer;
             printLetterByLetter("Twoja odpowiedz: ");
             cin >> userAnswer;
+            userAnswer = toUpper(userAnswer);
             if (id == 6) {
                 string wiadomosc = caesarEncrypt("W ciemnym lesie, za gorami, drzemie FURIA ze smokami", stoi(answer));
                 printLetterByLetter("Zmieniona wiadomosc : ");
@@ -792,7 +793,7 @@ void battle(Player& player, Dragon& dragon) {
                         printLetterByLetter("Wez przynajmniej to... Moze przedluzy Twoje zycie o pare chwil... [SZLOCH] Powodzenia " + player.name + "!\n");
                         printGold("[dodano SPRYSKIWACZ 3000 do ekwipunku]\n");
                         for (auto it = player.inventory.begin(); it != player.inventory.end(); ++it) {
-                            if (*it == "Gasnica mlodego pogromcy" || *it == "Gasnior 2000" || * it == "Gasnica doswiadczonego pogromcy") {
+                            if (*it == "Gasnica mlodego pogromcy" || *it == "Gasnior 2000" || * it == "Gasnica doswiadczonego pogromcy" || *it == "Spryskiwacz 3000") {
                                 player.inventory.erase(it); // Usuń stara gasnice z ekwipunku
                                 break; // Zatrzymaj pętlę po użyciu apteczki
                             }
@@ -1019,7 +1020,7 @@ void Game::handleGameMenuInput(const std::string& input) {
     }
     else if (input == "3") {
         for (int i = 0; i < 6; i++) {
-            if (dragons[i].health >= 0) {
+            if (dragons[i].health > 0) {
                 int czy_na_pewno = 1;
                 switch (i) {
                     case 0: {
@@ -1138,6 +1139,9 @@ void Game::saveGame() {
         saveFile << player.escapes << "\n";
         saveFile << player.puzzleMistakes << "\n";
         saveFile << player.rescueMistakes << "\n";
+        for (int i = 0; i < 6; i++) {
+            saveFile << dragons[i].health << "\n";
+        }
         for (const auto& item : player.inventory) {
             saveFile << item << "\n";
         }
@@ -1160,6 +1164,9 @@ void Game::loadGame() {
         loadFile >> player.escapes;
         loadFile >> player.puzzleMistakes;
         loadFile >> player.rescueMistakes;
+        for (int i = 0; i < 6; i++) {
+            loadFile >> dragons[i].health;
+        }
         std::string item;
         player.inventory.clear();
             //pusta linijka
